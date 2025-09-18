@@ -41,15 +41,15 @@
     <!-- Game Container (This will be filled by JavaScript) -->
     <div id="game-container" class="hidden"></div>
 
-    <!-- All of your original Modals -->
+    <!-- All of your original Modals must be here for the single-player game to work -->
     <div id="color-picker-modal" class="modal-overlay hidden"><div class="modal-content"><h3>Choose a Color</h3><div class="color-choices"><div class="color-choice" data-color="red"></div><div class="color-choice" data-color="green"></div><div class="color-choice" data-color="blue"></div><div class="color-choice" data-color="yellow"></div></div></div></div>
     <div id="rules-modal" class="modal-overlay hidden"><div class="modal-content"><h3>Game Rules</h3><ul><li>Match the top card by number, color, or symbol.</li><li>Special cards: Skip, Reverse, Draw Two.</li><li>Wild cards let you choose the color.</li><li>If you have one card left, you must call UNO!</li></ul><button id="close-rules-button">Close</button></div></div>
-    <div id="stats-modal" class="modal-overlay hidden"><div class="modal-content"><h3>Your Career Stats</h3><div id="stats-content"></div><button id="close-stats-btn">Close</button></div></div>
-    <div id="game-over-modal" class="modal-overlay hidden"><div class="modal-content"><h3>Game Over</h3><p id="game-over-message"></p><div id="final-stats"></div><button id="restart-button">Play Again</button></div></div>
-    <div id="round-over-modal" class="modal-overlay hidden"><div class="modal-content"><h3>Round Over</h3><p id="round-over-message"></p><button id="next-round-btn">Next Round</button></div></div>
+    <div id="stats-modal" class="modal-overlay hidden"><div class="modal-content"><h3>Your Career Stats</h3><div id="stats-content" style="margin-top: 20px; text-align: left; line-height: 1.6;"></div><button id="close-stats-btn">Close</button></div></div>
+    <div id="game-over-modal" class="modal-overlay hidden"><div class="modal-content"><h3>Game Over</h3><p id="game-over-message" style="font-size: 1.2rem; margin: 20px 0;"></p><div id="final-stats" style="margin: 15px 0; text-align: left;"></div><button id="restart-button">Play Again</button></div></div>
+    <div id="round-over-modal" class="modal-overlay hidden"><div class="modal-content"><h3>Round Over</h3><p id="round-over-message" style="font-size: 1.2rem; margin: 20px 0; white-space: pre-wrap;"></p><button id="next-round-btn">Next Round</button></div></div>
     <div id="toast-notification"><p id="toast-message"></p></div>
 
     <script src="/socket.io/socket.io.js"></script>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script> <!-- We load the main script as a module -->
 </body>
 </html>
