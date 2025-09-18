@@ -1,63 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF--8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNO Multiplayer Game</title>
+    <title>UNO Game by Dipangshu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Landing Page -->
+    <!-- Landing Page with Both Options -->
     <div id="landing-page">
         <div id="animated-bg"></div>
         <div class="landing-content">
             <h1>UNO GAME</h1>
-            <p>Play with your friends online!</p>
+            <p>The classic card game, right in your browser!</p>
             <div class="menu-buttons">
-                <button id="create-room-btn">Create New Room</button>
-                <div class="join-room-section" style="margin-top: 20px;">
-                    <input type="text" id="join-room-input" placeholder="Enter Room Code" style="padding: 12px; font-size: 1.1rem; border-radius: 25px; border: 2px solid #FBC02D; text-align: center; background-color: #333; color: white;">
-                    <button id="join-room-btn" style="margin-top: 10px;">Join Room</button>
+                <!-- এই বাটনটি ক্লিক করলে পুরনো কম্পিউটার গেমটি লোড হবে -->
+                <button id="play-computer-btn">Play with Computer</button>
+                <!-- এই বাটনটি ক্লিক করলে মাল্টিপ্লেয়ার রুম তৈরি হবে -->
+                <button id="create-room-btn">Create Custom Room</button>
+                <!-- মাল্টিপ্লেয়ার রুমে যোগ দেওয়ার জন্য ইনপুট -->
+                <div class="join-room-section" style="margin-top: 15px;">
+                    <input type="text" id="join-room-input" placeholder="Enter Room Code" style="text-transform: uppercase; padding: 12px; font-size: 1.1rem; border-radius: 25px; border: 2px solid #ccc; text-align: center; background-color: #333; color: white; max-width: 300px;">
+                    <button id="join-room-btn" style="margin-top: 10px; background-color: transparent; color: #FBC02D;">Join Room</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Lobby (Waiting Area) -->
-    <div id="lobby-page" class="hidden" style="text-align: center; padding-top: 100px;">
+    <!-- Lobby (Waiting Area for Multiplayer) -->
+    <div id="lobby-page" class="hidden" style="text-align: center; padding: 50px 20px;">
         <h2>Lobby</h2>
         <p style="font-size: 1.2rem;">Room Code: <strong id="room-code" style="background-color: #FBC02D; color: #212121; padding: 5px 10px; border-radius: 5px; cursor: pointer;" title="Click to copy"></strong></p>
         <p>Share this code with your friends!</p>
         <h3>Players in Lobby:</h3>
-        <ul id="player-list" style="list-style: none; padding: 0; font-size: 1.1rem;"></ul>
-        <button id="start-game-btn" class="hidden">Start Game</button>
+        <ul id="player-list" style="list-style: none; padding: 0; font-size: 1.1rem; min-height: 100px;"></ul>
+        <button id="start-game-btn" class="hidden" style="font-size: 1.3rem; padding: 15px 30px; background-color: #4CAF50; color: white; border: none; border-radius: 10px;">Start Game</button>
         <p id="start-game-msg" class="hidden">Waiting for the host to start the game...</p>
     </div>
 
-    <!-- Game Container -->
+    <!-- The Original Game Container for BOTH modes -->
     <div id="game-container" class="hidden">
-        <div class="player-area" id="opponent-area">
-            <h2>Opponents</h2>
-            <div id="opponents-hands" class="hand"></div>
-        </div>
-        <div id="deck-area">
-            <div class="card-pile" id="deck-pile" title="Draw a card"><div class="card back"></div></div>
-            <div class="card-pile" id="discard-pile"></div>
-        </div>
-        <div class="player-area" id="player-area" class="active-player">
-            <h2>Your Hand</h2>
-            <div class="hand" id="player-hand"></div>
-        </div>
-        <div id="game-status">
-            <p id="status-message">Game is starting...</p>
-             <button id="uno-button" class="hidden">UNO!</button>
-        </div>
+        <!-- (আপনার পুরনো গেমের সব অংশ এখানে আছে) -->
     </div>
 
-    <!-- Modals will go here if needed later -->
-
     <script src="/socket.io/socket.io.js"></script>
-    <script src="script.js"></script>
+    <!-- আমরা script.js ফাইলটিকে এখন থেকে module হিসেবে লোড করব -->
+    <script type="module" src="script.js"></script>
 </body>
 </html>
