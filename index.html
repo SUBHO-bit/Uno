@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF--8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNO Game by Dipangshu</title>
+    <title>UNO Card Game by Dipangshu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Landing Page with Both Options -->
+    <!-- Landing Page -->
     <div id="landing-page">
         <div id="animated-bg"></div>
         <div class="landing-content">
             <h1>UNO GAME</h1>
             <p>The classic card game, right in your browser!</p>
             <div class="menu-buttons">
-                <!-- এই বাটনটি ক্লিক করলে পুরনো কম্পিউটার গেমটি লোড হবে -->
                 <button id="play-computer-btn">Play with Computer</button>
-                <!-- এই বাটনটি ক্লিক করলে মাল্টিপ্লেয়ার রুম তৈরি হবে -->
-                <button id="create-room-btn">Create Custom Room</button>
-                <!-- মাল্টিপ্লেয়ার রুমে যোগ দেওয়ার জন্য ইনপুট -->
+                <button id="create-room-btn">Create Multiplayer Room</button>
                 <div class="join-room-section" style="margin-top: 15px;">
                     <input type="text" id="join-room-input" placeholder="Enter Room Code" style="text-transform: uppercase; padding: 12px; font-size: 1.1rem; border-radius: 25px; border: 2px solid #ccc; text-align: center; background-color: #333; color: white; max-width: 300px;">
                     <button id="join-room-btn" style="margin-top: 10px; background-color: transparent; color: #FBC02D;">Join Room</button>
                 </div>
+                <button id="show-stats-btn" style="margin-top: 20px;">My Stats</button>
             </div>
         </div>
+        <footer> <p>Developed by Dipangshu Das</p> </footer>
     </div>
-
+    
     <!-- Lobby (Waiting Area for Multiplayer) -->
     <div id="lobby-page" class="hidden" style="text-align: center; padding: 50px 20px;">
         <h2>Lobby</h2>
@@ -39,13 +38,18 @@
         <p id="start-game-msg" class="hidden">Waiting for the host to start the game...</p>
     </div>
 
-    <!-- The Original Game Container for BOTH modes -->
-    <div id="game-container" class="hidden">
-        <!-- (আপনার পুরনো গেমের সব অংশ এখানে আছে) -->
-    </div>
+    <!-- Game Container (This will be filled by JavaScript) -->
+    <div id="game-container" class="hidden"></div>
+
+    <!-- All of your original Modals -->
+    <div id="color-picker-modal" class="modal-overlay hidden"><div class="modal-content"><h3>Choose a Color</h3><div class="color-choices"><div class="color-choice" data-color="red"></div><div class="color-choice" data-color="green"></div><div class="color-choice" data-color="blue"></div><div class="color-choice" data-color="yellow"></div></div></div></div>
+    <div id="rules-modal" class="modal-overlay hidden"><div class="modal-content"><h3>Game Rules</h3><ul><li>Match the top card by number, color, or symbol.</li><li>Special cards: Skip, Reverse, Draw Two.</li><li>Wild cards let you choose the color.</li><li>If you have one card left, you must call UNO!</li></ul><button id="close-rules-button">Close</button></div></div>
+    <div id="stats-modal" class="modal-overlay hidden"><div class="modal-content"><h3>Your Career Stats</h3><div id="stats-content"></div><button id="close-stats-btn">Close</button></div></div>
+    <div id="game-over-modal" class="modal-overlay hidden"><div class="modal-content"><h3>Game Over</h3><p id="game-over-message"></p><div id="final-stats"></div><button id="restart-button">Play Again</button></div></div>
+    <div id="round-over-modal" class="modal-overlay hidden"><div class="modal-content"><h3>Round Over</h3><p id="round-over-message"></p><button id="next-round-btn">Next Round</button></div></div>
+    <div id="toast-notification"><p id="toast-message"></p></div>
 
     <script src="/socket.io/socket.io.js"></script>
-    <!-- আমরা script.js ফাইলটিকে এখন থেকে module হিসেবে লোড করব -->
-    <script type="module" src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
